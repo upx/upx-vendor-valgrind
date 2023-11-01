@@ -40,7 +40,7 @@ tmpdir=$(mktemp -d -t upx-vendor-XXXXXX)
 mkdir -p $tmpdir/include/valgrind
 cp -ai COPYING $tmpdir
 cp -ai callgrind/callgrind.h dhat/dhat.h drd/drd.h helgrind/helgrind.h memcheck/memcheck.h $tmpdir/include/valgrind
-sed 's/@VG_VER_MAJOR@/3/;s/@VG_VER_MINOR@/22/' < include/valgrind.h.in > $tmpdir/include/valgrind/valgrind.h
+sed 's/@VG_VER_MAJOR@/3/;s/@VG_VER_MINOR@/23/' < include/valgrind.h.in > $tmpdir/include/valgrind/valgrind.h
 # 2) create new orphan tmp-branch
 if git rev-parse -q --verify tmp-branch >/dev/null; then
     git branch -D tmp-branch
