@@ -58,7 +58,7 @@
 
 
 #ifndef __MEMCHECK_H
-#define __MEMCHECK_H
+#define __MEMCHECK_H 1
 
 
 /* This file is for inclusion into client (your!) code.

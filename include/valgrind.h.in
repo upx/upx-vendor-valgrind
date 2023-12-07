@@ -71,7 +71,7 @@
    -DNVALGRIND) so that client requests are not even compiled in.  */
 
 #ifndef __VALGRIND_H
-#define __VALGRIND_H
+#define __VALGRIND_H 1
 
 
 /* ------------------------------------------------------------------ */
@@ -1732,9 +1732,9 @@ typedef
       "movq %%r15, %%rbp\n\t"                                     \
       ".cfi_restore_state\n\t"
 #else
-#  define __FRAME_POINTER
-#  define VALGRIND_CFI_PROLOGUE
-#  define VALGRIND_CFI_EPILOGUE
+#  define __FRAME_POINTER               /*empty*/
+#  define VALGRIND_CFI_PROLOGUE         /*empty*/
+#  define VALGRIND_CFI_EPILOGUE         /*empty*/
 #endif
 
 /* Macros to save and align the stack before making a function
@@ -4753,10 +4753,10 @@ typedef
       "lgr 11, 7\n\t"                                             \
       ".cfi_restore_state\n\t"
 #else
-#  define __FRAME_POINTER
+#  define __FRAME_POINTER               /*empty*/
 #  define VALGRIND_CFI_PROLOGUE                                   \
       "lgr 1,%1\n\t"
-#  define VALGRIND_CFI_EPILOGUE
+#  define VALGRIND_CFI_EPILOGUE         /*empty*/
 #endif
 
 /* Nb: On s390 the stack pointer is properly aligned *at all times*
@@ -6759,14 +6759,14 @@ VALGRIND_PRINTF(const char *format, ...)
    (void)format;
    return 0;
 #else /* NVALGRIND */
-#if defined(_MSC_VER) || defined(__MINGW64__)
+#if defined(_MSC_VER) || defined(__MINGW64__) || defined(__INTEL_COMPILER)
    uintptr_t _qzz_res;
 #else
    unsigned long _qzz_res;
 #endif
    va_list vargs;
    va_start(vargs, format);
-#if defined(_MSC_VER) || defined(__MINGW64__)
+#if defined(_MSC_VER) || defined(__MINGW64__) || defined(__INTEL_COMPILER)
    _qzz_res = VALGRIND_DO_CLIENT_REQUEST_EXPR(0,
                               VG_USERREQ__PRINTF_VALIST_BY_REF,
                               (uintptr_t)format,
@@ -6798,14 +6798,14 @@ VALGRIND_PRINTF_BACKTRACE(const char *format, ...)
    (void)format;
    return 0;
 #else /* NVALGRIND */
-#if defined(_MSC_VER) || defined(__MINGW64__)
+#if defined(_MSC_VER) || defined(__MINGW64__) || defined(__INTEL_COMPILER)
    uintptr_t _qzz_res;
 #else
    unsigned long _qzz_res;
 #endif
    va_list vargs;
    va_start(vargs, format);
-#if defined(_MSC_VER) || defined(__MINGW64__)
+#if defined(_MSC_VER) || defined(__MINGW64__) || defined(__INTEL_COMPILER)
    _qzz_res = VALGRIND_DO_CLIENT_REQUEST_EXPR(0,
                               VG_USERREQ__PRINTF_BACKTRACE_VALIST_BY_REF,
                               (uintptr_t)format,

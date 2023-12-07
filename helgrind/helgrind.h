@@ -56,7 +56,7 @@
 */
 
 #ifndef __HELGRIND_H
-#define __HELGRIND_H
+#define __HELGRIND_H 1
 
 #include "valgrind.h"
 
