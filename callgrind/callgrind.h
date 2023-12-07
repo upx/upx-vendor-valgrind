@@ -57,7 +57,7 @@
 */
 
 #ifndef __CALLGRIND_H
-#define __CALLGRIND_H
+#define __CALLGRIND_H 1
 
 #include "valgrind.h"
 

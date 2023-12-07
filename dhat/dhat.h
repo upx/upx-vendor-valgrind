@@ -57,7 +57,7 @@
 */
 
 #if !defined(VALGRIND_DHAT_H)
-#define VALGRIND_DHAT_H
+#define VALGRIND_DHAT_H 1
 
 #include "valgrind.h"
 
